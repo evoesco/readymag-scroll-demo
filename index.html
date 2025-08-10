@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Highlight Demo</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      scroll-behavior: smooth;
+    }
+    /* Fixed side navigation */
+    nav {
+      position: fixed;
+      top: 80px;
+      left: 40px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-size: 18px;
+      opacity: 0.6;
+      transition: all 0.3s ease;
+      font-weight: normal;
+    }
+    nav a.active {
+      opacity: 1;
+      font-weight: 700;
+    }
+    /* Sections styling */
+    section {
+      min-height: 100vh;
+      padding: 80px 40px 80px 200px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+    }
+    section:nth-child(odd) {
+      background-color: #f9f9f9;
+    }
+    section h2 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      font-size: 36px;
+    }
+    section p {
+      margin: 0;
+      max-width: 600px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <nav id="sideNav">
+    <a href="#s1" data-target="s1">01&nbsp;Tabular Review</a>
+    <a href="#s2" data-target="s2">02&nbsp;Assistant</a>
+    <a href="#s3" data-target="s3">03&nbsp;Word Add-in</a>
+    <a href="#s4" data-target="s4">04&nbsp;Research</a>
+  </nav>
+
+  <section id="s1">
+    <div>
+      <h2>Tabular Review</h2>
+      <p>Empower your legal team to work smarter, not harder. Transform folders full of contracts, agreements, or case files into an organized, interactive grid. Each document becomes a row, and each custom prompt a dedicated column—extract key data points, compare critical clauses and spot inconsistencies at a glance.</p>
+    </div>
+  </section>
+
+  <section id="s2">
+    <div>
+      <h2>Assistant</h2>
+      <p>Streamline your workflow with AI-powered assistance. Our assistant helps you navigate complex documents, suggests improvements, and automates routine tasks, allowing you to focus on high-value legal analysis.</p>
+    </div>
+  </section>
+
+  <section id="s3">
+    <div>
+      <h2>Word Add-in</h2>
+      <p>Integrate seamlessly with Microsoft Word. The add-in enables quick extraction of clauses, side-by-side comparisons, and context-aware suggestions directly within your familiar writing environment, boosting productivity.</p>
+    </div>
+  </section>
+
+  <section id="s4">
+    <div>
+      <h2>Research</h2>
+      <p>Leverage a powerful research tool that indexes millions of documents and case laws, delivering precise results tailored to your query. Save, annotate and share your findings effortlessly within your team.</p>
+    </div>
+  </section>
+
+  <script>
+    // intersection observer to highlight nav items
+    document.addEventListener('DOMContentLoaded', () => {
+      const navLinks = document.querySelectorAll('nav a');
+      const sections = document.querySelectorAll('section');
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5 // 50% of the section is visible
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const targetId = entry.target.getAttribute('id');
+          const navLink = document.querySelector(`nav a[data-target="${targetId}"]`);
+          if (entry.isIntersecting) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            if (navLink) navLink.classList.add('active');
+          }
+        });
+      }, observerOptions);
+
+      sections.forEach(section => observer.observe(section));
+    });
+  </script>
+</body>
+</html>
