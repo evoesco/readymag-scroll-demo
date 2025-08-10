@@ -3,210 +3,354 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lullius Beckham Law Guide</title>
-<!-- Import fonts: Bodoni Moda for headings, Inter for body -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<title>Beckham Law Guide | Lullius + Partners</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500;600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  *{
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Inter', sans-serif;
-    color: #2a2a2a;
-    line-height: 1.6;
-  }
-  h1, h2, h3 {
-    font-family: 'Bodoni Moda', serif;
-    font-weight: 600;
-    margin-top: 0;
-  }
-  header {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    padding: 20px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #ffffff;
-    border-bottom: 1px solid #eee;
-    z-index: 1000;
-  }
-  header img {
-    height: 40px;
-    width: auto;
-  }
-  header a.button {
-    text-decoration: none;
-    color: #ffffff;
-    background-color: #000000;
-    padding: 10px 18px;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 500;
-    transition: background-color 0.2s;
-  }
-  header a.button:hover {
-    background-color: #444444;
-  }
+/* Reset and global */
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: #222;
+  scroll-behavior: smooth;
+}
 
-  /* Side navigation */
-  nav#sideNav {
-    position: fixed;
-    top: 160px; /* Leaves space for header */
-    left: 40px;
-    z-index: 900;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  nav#sideNav a {
-    text-decoration: none;
-    color: #7a7a7a;
-    font-size: 18px;
-    font-weight: 400;
-    transition: color 0.3s, font-weight 0.3s;
-  }
-  nav#sideNav a.active {
-    color: #000000;
-    font-weight: 700;
-  }
+/* Weighted scroll class to disable default behavior if JS is active. We'll attach class 'smooth-scroll-active' to html when heavy scroll script runs */
+html.smooth-scroll-active { overflow: hidden; }
 
-  /* Sections */
-  section {
-    margin-left: 220px; /* Space for nav */
-    padding: 100px 60px;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    gap: 60px;
-    border-bottom: 1px solid #f5f5f5;
-  }
-  section:last-child {
-    border-bottom: none;
-  }
-  section img {
-    flex: 1 1 50%;
-    width: 50%;
-    max-width: 600px;
-    border-radius: 8px;
-    object-fit: cover;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
-  section .text {
-    flex: 1 1 50%;
-    max-width: 600px;
-  }
-  section .text h1 {
-    font-size: 42px;
-    margin-bottom: 20px;
-  }
-  section .text p {
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  border-bottom: 1px solid #eee;
+}
+.site-header .logo {
+  height: 40px;
+  width: auto;
+}
+.site-header .cta-btn {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #000;
+  color: #fff;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+.site-header .cta-btn:hover { background-color: #444; }
 
-  @media (max-width: 900px) {
-    nav#sideNav {
-      display: none;
-    }
-    section {
-      margin-left: 0;
-      flex-direction: column;
-      padding: 80px 20px;
-    }
-    section img, section .text {
-      width: 100%;
-      max-width: none;
-    }
+/* Side navigation */
+#sideNav {
+  position: fixed;
+  top: 160px; /* leaves space for header */
+  left: 40px;
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 18px;
+}
+#sideNav a {
+  text-decoration: none;
+  color: #7a7a7a;
+  font-weight: 400;
+  transition: opacity 0.2s, transform 0.2s;
+  opacity: 0.6;
+}
+#sideNav a.active {
+  color: #111;
+  font-weight: 700;
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+/* Main container */
+main {
+  margin-left: 200px; /* space for nav */
+  padding-right: 40px;
+}
+
+/* Intro section */
+.intro-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  min-height: 100vh;
+  padding: 80px 0;
+  border-bottom: 1px solid #eee;
+}
+.intro-section .intro-content {
+  flex: 1 1 45%;
+  padding-right: 40px;
+}
+.intro-section .intro-content h1 {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+.intro-section .intro-content p {
+  font-size: 18px;
+  max-width: 560px;
+}
+.intro-section .intro-image {
+  flex: 1 1 55%;
+}
+.intro-section .intro-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+/* Feature sections */
+.feature-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  min-height: 100vh;
+  padding: 80px 0;
+  border-bottom: 1px solid #eee;
+}
+.feature-section:nth-child(even) .feature-image {
+  order: 2;
+}
+.feature-section:nth-child(even) .feature-content {
+  order: 1;
+}
+.feature-section .feature-image {
+  flex: 1 1 62%;
+  padding-right: 32px;
+}
+.feature-section .feature-image img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+.feature-section .feature-content {
+  flex: 1 1 38%;
+}
+.feature-section .feature-content h2 {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(28px, 4vw, 40px);
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+.feature-section .feature-content p {
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+.feature-section .feature-content .micro-cta {
+  text-decoration: none;
+  color: #0066CC;
+  font-weight: 500;
+  font-size: 14px;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+.feature-section .feature-content .micro-cta:hover {
+  border-color: #0066CC;
+}
+
+/* Responsive */
+@media (max-width: 1279px) {
+  #sideNav { position: static; flex-direction: row; gap: 16px; margin-bottom: 24px; }
+  main { margin-left: 0; }
+  .feature-section, .intro-section {
+    padding: 60px 0;
   }
+  .feature-section .feature-image {
+    flex-basis: 100%;
+    padding-right: 0;
+    margin-bottom: 32px;
+  }
+  .feature-section .feature-content {
+    flex-basis: 100%;
+  }
+}
+@media (max-width: 767px) {
+  .site-header { flex-direction: row; justify-content: space-between; padding: 12px 16px; }
+  .site-header .logo { height: 32px; }
+  #sideNav { flex-wrap: wrap; gap: 8px; font-size: 14px; position: static; }
+  .intro-section, .feature-section {
+    padding: 40px 0;
+  }
+  .intro-section .intro-content h1 { font-size: 32px; }
+  .intro-section .intro-content p { font-size: 16px; }
+  .feature-section .feature-content h2 { font-size: 24px; }
+  .feature-section .feature-image img,
+  .intro-section .intro-image img {
+    border-radius: 16px;
+  }
+}
+
+/* Weighted scroll toggle button could be added if necessary */
 </style>
 </head>
 <body>
-<header>
-  <!-- Logo -->
-  <img src="LULLIUS_300ppi.png" alt="Lullius + Partners logo">
-  <!-- Call to action -->
-  <a class="button" href="https://form.typeform.com/to/gBm6Ot0b?typeform-source=www.lullius.com" target="_blank" rel="noopener">Get the guide</a>
+<header class="site-header">
+  <img class="logo" src="LULLIUS_300ppi.png" alt="Lullius + Partners logo">
+  <a href="https://form.typeform.com/to/gBm6Ot0b?typeform-source=www.lullius.com" class="cta-btn">Get the guide</a>
 </header>
 
-<!-- Side Navigation -->
 <nav id="sideNav">
-  <a href="#s1" data-target="s1">01 Tabular Review</a>
-  <a href="#s2" data-target="s2">02 Assistant</a>
-  <a href="#s3" data-target="s3">03 Word Add-in</a>
-  <a href="#s4" data-target="s4">04 Research</a>
+  <a href="#sec-eligibility" data-target="sec-eligibility">01 Eligibility</a>
+  <a href="#sec-benefits" data-target="sec-benefits">02 Benefits</a>
+  <a href="#sec-duration" data-target="sec-duration">03 Duration</a>
+  <a href="#sec-costs" data-target="sec-costs">04 Costs &amp; Exclusions</a>
+  <a href="#sec-procedure" data-target="sec-procedure">05 Procedure</a>
+  <a href="#sec-compliance" data-target="sec-compliance">06 Compliance &amp; Risks</a>
+  <a href="#sec-faqs" data-target="sec-faqs">07 Special Cases</a>
 </nav>
 
-<!-- Sections -->
-<section id="s1">
-  <img src="https://picsum.photos/seed/section1/800/600" alt="Section 1 image">
-  <div class="text">
-    <h1>Tabular Review</h1>
-    <p>Empower your team to work smarter, not harder. Transform folders full of contracts or case files into an organized, interactive grid. Each document automatically becomes a row, while each custom prompt generates a dedicated column—letting you extract key data points at a glance.</p>
+<main>
+<section id="intro" class="intro-section">
+  <div class="intro-content">
+    <h1>The Beckham Law: Your Exclusive Tax Route</h1>
+    <p>The Beckham Law is a special tax regime in Spain designed to attract international executives, entrepreneurs and highly-skilled professionals. Qualified newcomers can benefit from a 24% flat income tax rate on employment earnings up to €600,000, with taxation limited to Spanish-source income. This exclusive framework simplifies Spanish residency and is available for six years when strict eligibility criteria are met, offering a streamlined route for those relocating to Spain【917969817622208†screenshot】.</p>
+  </div>
+  <div class="intro-image">
+    <img src="florian-schmid-yDgg69ofPO8-unsplash.jpg" alt="Curved architectural concrete structure">
   </div>
 </section>
 
-<section id="s2">
-  <img src="https://picsum.photos/seed/section2/800/600" alt="Section 2 image">
-  <div class="text">
-    <h1>Assistant</h1>
-    <p>Free yourself from repetitive tasks. Our assistant leverages AI to summarize documents, suggest edits, and provide insights so you can focus on high‑value work. It's like having a research assistant who never sleeps.</p>
+<section id="sec-eligibility" class="feature-section">
+  <div class="feature-image">
+    <img src="liberatto-RUYCsWDSJFo-unsplash.jpg" alt="Modern building by the sea illustrating stability">
+  </div>
+  <div class="feature-content">
+    <h2>Eligibility Requirements</h2>
+    <p>To qualify for the Beckham Law you must not have been tax resident in Spain during the previous five years and must relocate because of a genuine job move. Eligible scenarios include signing a new employment contract with a Spanish company, being assigned to a Spanish entity by your current employer, working remotely from Spain for a foreign company, becoming a director of a Spanish company (without owning a significant stake), launching an innovative start‑up or carrying out research or training activities【756971887955324†screenshot】【47338107579236†screenshot】. The application must be filed within six months of starting your activity, and income must not be earned through a permanent establishment【92456647547442†screenshot】.</p>
+    <a href="#intro" class="micro-cta">Check eligibility</a>
   </div>
 </section>
 
-<section id="s3">
-  <img src="https://picsum.photos/seed/section3/800/600" alt="Section 3 image">
-  <div class="text">
-    <h1>Word Add‑in</h1>
-    <p>Bring the power of automation right into your writing environment. Our Word add‑in helps you annotate, compare clauses, and ensure consistency across your documents with a single click.</p>
+<section id="sec-benefits" class="feature-section">
+  <div class="feature-image">
+    <img src="jackson-jost-RMynbTjDu_g-unsplash.jpg" alt="Abstract architectural facade conveying advantages">
+  </div>
+  <div class="feature-content">
+    <h2>Fiscal Benefits</h2>
+    <p>The regime taxes employment income at a flat 24% up to €600,000 and 47% on any excess【111005362038336†screenshot】. Only income generated in Spain is subject to taxation, while foreign earnings remain exempt【917969817622208†screenshot】. Wealth and solidarity taxes apply solely to assets located in Spain【664065058939297†screenshot】, and beneficiaries are relieved from filing the Modelo 720 foreign assets return【111005362038336†screenshot】. Note that pension contributions and other remuneration in kind remain fully taxable and there is no deduction for property expenses, so careful planning is essential【128184904148107†screenshot】.</p>
+    <a href="#intro" class="micro-cta">Discover the benefits</a>
   </div>
 </section>
 
-<section id="s4">
-  <img src="https://picsum.photos/seed/section4/800/600" alt="Section 4 image">
-  <div class="text">
-    <h1>Research</h1>
-    <p>Dive into detailed analysis without leaving your page. Research relevant law, precedent and commentary instantly. Discover insights, spot inconsistencies, and make informed decisions with ease.</p>
+<section id="sec-duration" class="feature-section">
+  <div class="feature-image">
+    <img src="thanos-pal-FSwYOB_Zeo4-unsplash.jpg" alt="Geometric facade symbolising timeline">
+  </div>
+  <div class="feature-content">
+    <h2>Duration &amp; Renewals</h2>
+    <p>The Beckham Law applies for the tax year in which you become a resident plus the following five years, making a total of six years of preferential treatment【917969817622208†screenshot】. You must submit your application within six months of starting your professional activity【756971887955324†screenshot】. The regime terminates if you cease to meet the requirements, leave Spain, or once the six‑year period expires【804495120209323†screenshot】. Each year you must file the special non‑resident tax return and evaluate whether remaining in the regime continues to be advantageous.</p>
+    <a href="#intro" class="micro-cta">Understand the timeline</a>
   </div>
 </section>
+
+<section id="sec-costs" class="feature-section">
+  <div class="feature-image">
+    <img src="pierre-chatel-innocenti-N5RN0JE5kaY-unsplash.jpg" alt="Sleek modern building depicting costs">
+  </div>
+  <div class="feature-content">
+    <h2>Costs &amp; Exclusions</h2>
+    <p>Although the flat rate is attractive, the Beckham regime does not allow deductions for expenses related to Spanish property, and certain types of income remain fully taxable. Severance payments, public pensions, scholarships, disability benefits and annuities are not exempt under this regime【128184904148107†screenshot】. Rental income is taxed without the 60% reduction available to residents【664065058939297†screenshot】, and contributions to Spanish pension plans are taxed at 24% regardless of amount【128184904148107†screenshot】. There is no entitlement to personal allowances or deductions, so the overall tax burden may be higher for some profiles.</p>
+    <a href="#intro" class="micro-cta">Review the fine print</a>
+  </div>
+</section>
+
+<section id="sec-procedure" class="feature-section">
+  <div class="feature-image">
+    <img src="pierre-chatel-innocenti-YDarsL40neU-unsplash.jpg" alt="Complex structure symbolising process">
+  </div>
+  <div class="feature-content">
+    <h2>Procedure &amp; Timeline</h2>
+    <p>The application process begins with a preliminary assessment to ensure the regime is worthwhile and to verify deadlines【250560986740036†screenshot】. You must register with the Spanish Tax Agency, obtain a foreigner identification number and submit Form 030, then file your application electronically with supporting documents within six months【756971887955324†screenshot】. The tax agency may request additional information before issuing a resolution. Once accepted, you must file the special tax return annually, assess wealth or solidarity tax obligations and stay informed of legislative changes【250560986740036†screenshot】. Termination can occur voluntarily, through non‑compliance or when the six-year period ends【804495120209323†screenshot】.</p>
+    <a href="#intro" class="micro-cta">See the steps</a>
+  </div>
+</section>
+
+<section id="sec-compliance" class="feature-section">
+  <div class="feature-image">
+    <img src="ricardo-gomez-angel-2mjl2uvz9ic-unsplash.jpg" alt="Sharp building lines representing compliance">
+  </div>
+  <div class="feature-content">
+    <h2>Compliance &amp; Risks</h2>
+    <p>Maintaining eligibility requires adherence to strict rules: you cannot operate a permanent establishment in Spain, must continue to perform your qualifying professional activity and must not acquire tax residency through other criteria【47338107579236†screenshot】. The regime may not suit those with significant foreign passive income or property income due to the absence of deductions and credits【128184904148107†screenshot】. Non‑compliance or missing the six‑month application window results in loss of the regime【756971887955324†screenshot】. Professional advice is recommended to navigate these rules and ensure continued compliance【250560986740036†screenshot】.</p>
+    <a href="#intro" class="micro-cta">Mitigate the risks</a>
+  </div>
+</section>
+
+<section id="sec-faqs" class="feature-section">
+  <div class="feature-image">
+    <img src="fabian-fauth-RiWvn39cZSQ-unsplash.jpg" alt="Dynamic abstract architecture for FAQs">
+  </div>
+  <div class="feature-content">
+    <h2>Special Cases &amp; FAQs</h2>
+    <p>Spouses and children under 25 who move with the main applicant can opt into the Beckham regime provided they also meet the five‑year non‑residency requirement and do not earn income through a permanent establishment【47338107579236†screenshot】. Each additional family member enjoys the same tax rate and limits, though all must file individual applications【804495120209323†screenshot】. Frequently asked questions involve how teleworking arrangements fit within the rules, the treatment of stock options and the interaction with wealth taxes. These points underscore the importance of personalised advice tailored to your circumstances.</p>
+    <a href="#intro" class="micro-cta">Explore special cases</a>
+  </div>
+</section>
+</main>
 
 <script>
-  // Intersection Observer to highlight nav links on scroll
-  const observerOptions = { threshold: 0.5 };
-  const navLinks = document.querySelectorAll('#sideNav a');
-  const sections = document.querySelectorAll('section');
-  
-  const observer = new IntersectionObserver(entries => {
+// IntersectionObserver to highlight nav items
+(function(){
+  const nav = document.getElementById('sideNav');
+  if(!nav) return;
+  const items = Array.from(nav.querySelectorAll('a[data-target]'));
+  const sections = items.map(a => document.getElementById(a.dataset.target));
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      const id = entry.target.getAttribute('id');
-      const link = document.querySelector(`#sideNav a[data-target="${id}"]`);
-      if (entry.isIntersecting) {
-        navLinks.forEach(a => a.classList.remove('active'));
-        if(link) link.classList.add('active');
+      const idx = sections.indexOf(entry.target);
+      if(entry.isIntersecting) {
+        items.forEach(el => el.classList.remove('active'));
+        if(idx >= 0) items[idx].classList.add('active');
       }
     });
-  }, observerOptions);
+  }, { threshold: 0.4 });
+  sections.forEach(sec => { if(sec) observer.observe(sec); });
+})();
 
-  sections.forEach(section => {
-    observer.observe(section);
-  });
+// Weighted scroll effect with reduced motion support
+(function(){
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(prefersReduced) return;
+  let current = window.pageYOffset || document.documentElement.scrollTop;
+  let target = current;
+  const ease = 0.1;
+  const multiplier = 0.6;
 
-  // Smooth scroll on nav click
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('data-target');
-      const target = document.getElementById(targetId);
-      if(target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
+  function tick() {
+    current += (target - current) * ease;
+    window.scrollTo(0, current);
+    requestAnimationFrame(tick);
+  }
+  function onWheel(e) {
+    // Avoid interfering with inner scroll containers
+    if (e.target.closest('div[style*="overflow:auto"], textarea, select')) return;
+    e.preventDefault();
+    target += e.deltaY * multiplier;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    if(target < 0) target = 0;
+    if(target > maxScroll) target = maxScroll;
+  }
+  document.documentElement.classList.add('smooth-scroll-active');
+  window.addEventListener('wheel', onWheel, { passive: false });
+  requestAnimationFrame(tick);
+})();
 </script>
 </body>
 </html>
