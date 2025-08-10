@@ -1,122 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scroll Highlight Demo</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-      scroll-behavior: smooth;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lullius Beckham Law Guide</title>
+<!-- Import fonts: Bodoni Moda for headings, Inter for body -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    color: #2a2a2a;
+    line-height: 1.6;
+  }
+  h1, h2, h3 {
+    font-family: 'Bodoni Moda', serif;
+    font-weight: 600;
+    margin-top: 0;
+  }
+  header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eee;
+    z-index: 1000;
+  }
+  header img {
+    height: 40px;
+    width: auto;
+  }
+  header a.button {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #000000;
+    padding: 10px 18px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+  }
+  header a.button:hover {
+    background-color: #444444;
+  }
+
+  /* Side navigation */
+  nav#sideNav {
+    position: fixed;
+    top: 160px; /* Leaves space for header */
+    left: 40px;
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  nav#sideNav a {
+    text-decoration: none;
+    color: #7a7a7a;
+    font-size: 18px;
+    font-weight: 400;
+    transition: color 0.3s, font-weight 0.3s;
+  }
+  nav#sideNav a.active {
+    color: #000000;
+    font-weight: 700;
+  }
+
+  /* Sections */
+  section {
+    margin-left: 220px; /* Space for nav */
+    padding: 100px 60px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    border-bottom: 1px solid #f5f5f5;
+  }
+  section:last-child {
+    border-bottom: none;
+  }
+  section img {
+    flex: 1 1 50%;
+    width: 50%;
+    max-width: 600px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  section .text {
+    flex: 1 1 50%;
+    max-width: 600px;
+  }
+  section .text h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+  }
+  section .text p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 900px) {
+    nav#sideNav {
+      display: none;
     }
-    /* Fixed side navigation */
-    nav {
-      position: fixed;
-      top: 80px;
-      left: 40px;
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    nav a {
-      text-decoration: none;
-      color: #333;
-      font-size: 18px;
-      opacity: 0.6;
-      transition: all 0.3s ease;
-      font-weight: normal;
-    }
-    nav a.active {
-      opacity: 1;
-      font-weight: 700;
-    }
-    /* Sections styling */
     section {
-      min-height: 100vh;
-      padding: 80px 40px 80px 200px;
-      box-sizing: border-box;
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid #eee;
+      margin-left: 0;
+      flex-direction: column;
+      padding: 80px 20px;
     }
-    section:nth-child(odd) {
-      background-color: #f9f9f9;
+    section img, section .text {
+      width: 100%;
+      max-width: none;
     }
-    section h2 {
-      margin-top: 0;
-      margin-bottom: 16px;
-      font-size: 36px;
-    }
-    section p {
-      margin: 0;
-      max-width: 600px;
-      line-height: 1.5;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <nav id="sideNav">
-    <a href="#s1" data-target="s1">01&nbsp;Tabular Review</a>
-    <a href="#s2" data-target="s2">02&nbsp;Assistant</a>
-    <a href="#s3" data-target="s3">03&nbsp;Word Add-in</a>
-    <a href="#s4" data-target="s4">04&nbsp;Research</a>
-  </nav>
+<header>
+  <!-- Logo -->
+  <img src="LULLIUS_300ppi.png" alt="Lullius + Partners logo">
+  <!-- Call to action -->
+  <a class="button" href="https://form.typeform.com/to/gBm6Ot0b?typeform-source=www.lullius.com" target="_blank" rel="noopener">Get the guide</a>
+</header>
 
-  <section id="s1">
-    <div>
-      <h2>Tabular Review</h2>
-      <p>Empower your legal team to work smarter, not harder. Transform folders full of contracts, agreements, or case files into an organized, interactive grid. Each document becomes a row, and each custom prompt a dedicated column—extract key data points, compare critical clauses and spot inconsistencies at a glance.</p>
-    </div>
-  </section>
+<!-- Side Navigation -->
+<nav id="sideNav">
+  <a href="#s1" data-target="s1">01 Tabular Review</a>
+  <a href="#s2" data-target="s2">02 Assistant</a>
+  <a href="#s3" data-target="s3">03 Word Add-in</a>
+  <a href="#s4" data-target="s4">04 Research</a>
+</nav>
 
-  <section id="s2">
-    <div>
-      <h2>Assistant</h2>
-      <p>Streamline your workflow with AI-powered assistance. Our assistant helps you navigate complex documents, suggests improvements, and automates routine tasks, allowing you to focus on high-value legal analysis.</p>
-    </div>
-  </section>
+<!-- Sections -->
+<section id="s1">
+  <img src="https://picsum.photos/seed/section1/800/600" alt="Section 1 image">
+  <div class="text">
+    <h1>Tabular Review</h1>
+    <p>Empower your team to work smarter, not harder. Transform folders full of contracts or case files into an organized, interactive grid. Each document automatically becomes a row, while each custom prompt generates a dedicated column—letting you extract key data points at a glance.</p>
+  </div>
+</section>
 
-  <section id="s3">
-    <div>
-      <h2>Word Add-in</h2>
-      <p>Integrate seamlessly with Microsoft Word. The add-in enables quick extraction of clauses, side-by-side comparisons, and context-aware suggestions directly within your familiar writing environment, boosting productivity.</p>
-    </div>
-  </section>
+<section id="s2">
+  <img src="https://picsum.photos/seed/section2/800/600" alt="Section 2 image">
+  <div class="text">
+    <h1>Assistant</h1>
+    <p>Free yourself from repetitive tasks. Our assistant leverages AI to summarize documents, suggest edits, and provide insights so you can focus on high‑value work. It's like having a research assistant who never sleeps.</p>
+  </div>
+</section>
 
-  <section id="s4">
-    <div>
-      <h2>Research</h2>
-      <p>Leverage a powerful research tool that indexes millions of documents and case laws, delivering precise results tailored to your query. Save, annotate and share your findings effortlessly within your team.</p>
-    </div>
-  </section>
+<section id="s3">
+  <img src="https://picsum.photos/seed/section3/800/600" alt="Section 3 image">
+  <div class="text">
+    <h1>Word Add‑in</h1>
+    <p>Bring the power of automation right into your writing environment. Our Word add‑in helps you annotate, compare clauses, and ensure consistency across your documents with a single click.</p>
+  </div>
+</section>
 
-  <script>
-    // intersection observer to highlight nav items
-    document.addEventListener('DOMContentLoaded', () => {
-      const navLinks = document.querySelectorAll('nav a');
-      const sections = document.querySelectorAll('section');
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.5 // 50% of the section is visible
-      };
+<section id="s4">
+  <img src="https://picsum.photos/seed/section4/800/600" alt="Section 4 image">
+  <div class="text">
+    <h1>Research</h1>
+    <p>Dive into detailed analysis without leaving your page. Research relevant law, precedent and commentary instantly. Discover insights, spot inconsistencies, and make informed decisions with ease.</p>
+  </div>
+</section>
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          const targetId = entry.target.getAttribute('id');
-          const navLink = document.querySelector(`nav a[data-target="${targetId}"]`);
-          if (entry.isIntersecting) {
-            navLinks.forEach(link => link.classList.remove('active'));
-            if (navLink) navLink.classList.add('active');
-          }
-        });
-      }, observerOptions);
-
-      sections.forEach(section => observer.observe(section));
+<script>
+  // Intersection Observer to highlight nav links on scroll
+  const observerOptions = { threshold: 0.5 };
+  const navLinks = document.querySelectorAll('#sideNav a');
+  const sections = document.querySelectorAll('section');
+  
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const id = entry.target.getAttribute('id');
+      const link = document.querySelector(`#sideNav a[data-target="${id}"]`);
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        if(link) link.classList.add('active');
+      }
     });
-  </script>
+  }, observerOptions);
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+
+  // Smooth scroll on nav click
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('data-target');
+      const target = document.getElementById(targetId);
+      if(target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
 </body>
 </html>
